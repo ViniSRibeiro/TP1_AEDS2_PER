@@ -1,9 +1,9 @@
 /*
 	Grupo: Return NULL;
-	Eduardo VinÃ­cius Bittencourt Esquivel 3498
+	Eduardo Vinícius Bittencourt Esquivel 3498
 	Emanuel Vitor Carvalho Ruella 3891
 	Roniel Nunes Barbosa 3464
-	VinÃ­cius Tadeu Silva Ribeiro 2670
+	Vinícius Tadeu Silva Ribeiro 2670
 */
 #include "TADTST.h"
 
@@ -16,14 +16,14 @@ tipoApontadorTST criarNo(char data) //Retorna um novo no, criado;
 {
 	tipoApontadorTST aux = (tipoApontadorTST) malloc(sizeof(TipoTST)); //Cria um auxiliar que vai armazenar por enquanto o novo No;
 	aux->data = data; //Insere a data no no;
-	aux->FimDeString = 0; //Retorna falso, nÃ£o sendo fim da palavra;
+	aux->FimDeString = 0; //Retorna falso, não sendo fim da palavra;
 	aux->esq = NULL; //Aponta a esquerda para NULL;
 	aux->meio = NULL; //Aponta o meio para NULL;
 	aux->dir = NULL; //Aponta a direita para NULL;
 	return aux; //Retorna o auxiliar;
 }
 
-void inserirEmTST(tipoApontadorTST *tst) // Usado para pegar a palavra e chamar a funÃ§Ã£o inserirPalavraTST para inserir na arvore. Criado para maior facilidade de implementaÃ§Ã£o.
+void inserirEmTST(tipoApontadorTST *tst) // Usado para pegar a palavra e chamar a função inserirPalavraTST para inserir na arvore. Criado para maior facilidade de implementação.
 {
 	char buffer[MAX];
 	printf("Digite a palavra desejada: ");
@@ -32,19 +32,19 @@ void inserirEmTST(tipoApontadorTST *tst) // Usado para pegar a palavra e chamar 
 }
 void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra) //Insere uma palavra na arvore TST
 {
-	if (*noTST == NULL) //Verifica se a arvore ou posiÃ§Ã£o esta vazia, se estivar, cria um novo No;
+	if (*noTST == NULL) //Verifica se a arvore ou posição esta vazia, se estivar, cria um novo No;
 	{
 		*noTST = criarNo(*palavra); //Cria um no novo na arvore atual;
 	}
 	if ((*noTST)->data > (*palavra))//Se o caractere atual tiver menor valor, o insere na sub-arvore a esquerda;
 	{
-		inserirPalavraTST(&((*noTST)->esq), palavra); //Chama a funÃ§Ã£o inserir para a esquerda;
+		inserirPalavraTST(&((*noTST)->esq), palavra); //Chama a função inserir para a esquerda;
 	}
 	else if ((*noTST)->data < (*palavra)) //Se o caractere atual tiver valor maior, o insere na sub-arvore a direita;
 	{
-		inserirPalavraTST(&((*noTST)->dir), palavra);//Chama a funÃ§Ã£o inserir para a direita;
+		inserirPalavraTST(&((*noTST)->dir), palavra);//Chama a função inserir para a direita;
 	}
-	else //Se o caractere atual tiver valor identico ao da posiÃ§Ã£o atual na arvore.
+	else //Se o caractere atual tiver valor identico ao da posição atual na arvore.
 	{
 		if (*(palavra + 1))
 		{
@@ -57,7 +57,7 @@ void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra) //Insere uma pala
 	}
 }
 
-void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou nÃ£o.
+void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou não.
 {
 	char buffer[MAX];
 	printf("Digite a palavra desejada: ");
@@ -75,17 +75,17 @@ void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar pr
 }
 int procurarPalavraTST(tipoApontadorTST noTST, char *palavra) //Procura uma palavra na arvore TST, se a palavra existir, retorna 1, caso contrario 0;
 {
-	if (noTST == NULL) //Verifica se a arvore ou nÃ³ atual e nulo, se sim, retorna 0;
+	if (noTST == NULL) //Verifica se a arvore ou nó atual e nulo, se sim, retorna 0;
 	{
 		return 0;
 	}
-	if ((noTST)->data > *palavra) //Verifica se o caractere contido no nÃ³ atual e maior que o caractere da palavra sendo procurada
+	if ((noTST)->data > *palavra) //Verifica se o caractere contido no nó atual e maior que o caractere da palavra sendo procurada
 	{
-		return procurarPalavraTST(noTST->esq, palavra); //Se for maior, retorna recursivamente a funÃ§Ã£o atual, com a posiÃ§Ã£o para a esquerda;
+		return procurarPalavraTST(noTST->esq, palavra); //Se for maior, retorna recursivamente a função atual, com a posição para a esquerda;
 	}
-	else if ((noTST)->data < *palavra) //Verifica se o caractere contido no nÃ³ atual e menor que o caractere da palavra sendo procurada
+	else if ((noTST)->data < *palavra) //Verifica se o caractere contido no nó atual e menor que o caractere da palavra sendo procurada
 	{
-		return procurarPalavraTST(noTST->dir, palavra); //Se for menor, retorna recursivamente a funÃ§Ã£o atual, com a posiÃ§Ã£o para a direita;
+		return procurarPalavraTST(noTST->dir, palavra); //Se for menor, retorna recursivamente a função atual, com a posição para a direita;
 	}
 	else //Caso o caractere atual seja igual ao caractere sendo procurado.
 	{
@@ -93,17 +93,17 @@ int procurarPalavraTST(tipoApontadorTST noTST, char *palavra) //Procura uma pala
 		{
 			return noTST->FimDeString; //Se for, retorna o FimDaString (1)
 		}
-		return procurarPalavraTST(noTST->meio, palavra + 1); //Caso nÃ£o seja, retorna recursivamente a funÃ§Ã£o atual com a proxima posiÃ§Ã£o central e o proximo caractere.
+		return procurarPalavraTST(noTST->meio, palavra + 1); //Caso não seja, retorna recursivamente a função atual com a proxima posição central e o proximo caractere.
 		
 	}
 }
 
-void ordemTST(tipoApontadorTST noTST) //Apenas usado para criar um buffer e chamar a impressÃ£o da TST
+void ordemTST(tipoApontadorTST noTST) //Apenas usado para criar um buffer e chamar a impressão da TST
 {
 	char buffer[MAX];
 	imprimirOrdemTST(noTST, buffer, 0);
 }
-void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura) //Ira imprimir a arvore TST em um sistema parecido com a funÃ§Ã£o de ORDEM;
+void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura) //Ira imprimir a arvore TST em um sistema parecido com a função de ORDEM;
 {
 	if (noTST != NULL)
 	{
@@ -131,15 +131,26 @@ void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura) //Ira im
 void contarEmTST(tipoApontadorTST tst)//Usado para chamar o contarPalavrasTST e imprimir na tela a arvore correta
 {
 	int quantidadePalavras = 0;
-	quantidadePalavras = contarPalavrasTST(tst);
+	contarPalavrasTST(tst, &quantidadePalavras);
 	printf("Possuem %d palavras na arvore TST\n", quantidadePalavras);
 }
-int contarPalavrasTST(tipoApontadorTST noTST) //Conta o numero de palavras existentes;
+void contarPalavrasTST(tipoApontadorTST noTST, int *quantidadePalavras) //Conta o numero de palavras existentes;
 {
 	if (noTST != NULL)
 	{
 
+		contarPalavrasTST(noTST->esq, quantidadePalavras); //Anda pela subarvore a esquerda;
+
+		if (noTST->FimDeString) //Checa se e o fim da String, caso seja fim, finaliza o buffer com um \0 e imprime ele;
+		{
+			*quantidadePalavras += 1;
+			//printf("%d\n", *quantidadePalavras);
+		}
+
+		contarPalavrasTST(noTST->meio, quantidadePalavras); //Anda pela subarvore do meio (com caracter igual);
+
+		contarPalavrasTST(noTST->dir, quantidadePalavras); //Anda pela subarvore da direita;
 	}
-	return 0;
+	return;
 }
 //Entrada Teste: Arroz, Chocolate, Amendoin, Traveseiro, Comida, Zebra
