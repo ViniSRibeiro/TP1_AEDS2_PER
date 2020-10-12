@@ -21,7 +21,7 @@ TipoArvore CriaNoInterno(int i, char CarDiferente, TipoArvore *Esq,  TipoArvore 
     pArvore->NO.NInterno.Esq = *Esq;
     pArvore->NO.NInterno.Dir = *Dir;
     pArvore->NO.NInterno.posicao = i;
-    pArvore->NO.NInterno.letra = CarDiferente;
+    pArvore->NO.NInterno.caracter = CarDiferente;
 
     return pArvore;
 }
@@ -31,7 +31,7 @@ int EExterno (TipoArvore p){
 
 TipoArvore CriaNoExterno (char *palavra)
 {
-
+    
     TipoArvore pArvore;
     pArvore = (TipoArvore) malloc(sizeof(TipoPatNo));
     pArvore->TipoDeNo = Externo;
@@ -51,7 +51,7 @@ TipoArvore Insere(char *k, TipoArvore *t)
     {
         pArvore = *t;
         while (!EExterno(pArvore)) {
-            if (strlen(k) >= pArvore->NO.NInterno.posicao && k[pArvore->NO.NInterno.posicao] < (pArvore)->NO.NInterno.letra) {
+            if (strlen(k) >= pArvore->NO.NInterno.posicao && k[pArvore->NO.NInterno.posicao] < (pArvore)->NO.NInterno.caracter) {
 
                 pArvore = pArvore->NO.NInterno.Esq;
             } else {
@@ -84,7 +84,7 @@ TipoArvore InsereEntre (char *k, TipoArvore *t, int i, char CarDiferente)
 
     else
     {
-        if(k[(*t)->NO.NInterno.posicao] >= (*t)->NO.NInterno.letra)
+        if(k[(*t)->NO.NInterno.posicao] >= (*t)->NO.NInterno.caracter)
             (*t)->NO.NInterno.Dir = InsereEntre(k,&((*t)->NO.NInterno.Dir),i,CarDiferente);
         else
             (*t)->NO.NInterno.Esq = InsereEntre(k,&((*t)->NO.NInterno.Esq),i,CarDiferente);
@@ -123,6 +123,7 @@ int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp)
         (*QuantidadeDeComp)+=1;
         if(strcmp(k, t->NO.Chave)==0)
         {
+            printf("Chave Encontrada: %s\n",t->NO.Chave);
             return 1;
         }
         else
@@ -139,7 +140,7 @@ int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp)
         return 0;
     }
     (*QuantidadeDeComp)+=1;
-    if(k[t->NO.NInterno.posicao] >= t->NO.NInterno.letra)
+    if(k[t->NO.NInterno.posicao] >= t->NO.NInterno.caracter)
     {
         pesquisa(k,t->NO.NInterno.Dir,QuantidadeDeComp);
     }
@@ -148,4 +149,18 @@ int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp)
         pesquisa(k, t->NO.NInterno.Esq,QuantidadeDeComp);
     }
     // return ;
+}
+
+void imprime(TipoArvore p){
+    if (p != NULL)
+        printf("%s ",p->NO.Chave);
+}
+
+void imprimePatricia(TipoArvore p){
+    if (p != NULL)
+    {
+        imprime(p->NO.NInterno.Esq);
+        imprime(p);
+        imprime(p->NO.NInterno.Dir);
+    }
 }

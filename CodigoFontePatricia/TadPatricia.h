@@ -22,7 +22,7 @@ typedef struct TipoPatNo{
         struct
         {
             int posicao;
-            char letra;
+            char caracter;
             TipoArvore Esq, Dir;
         }NInterno;
         char Chave[55];
@@ -39,3 +39,6 @@ TipoArvore Insere(char *k, TipoArvore *t);
 int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp);
 int ComparaPalavra(char *palavraNaArvore, char *palavraRec);
 int maior(int a, int b);
+
+void imprime(TipoArvore p);
+void imprimePatricia(TipoArvore p);

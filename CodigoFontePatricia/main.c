@@ -11,14 +11,21 @@
 
 int main(){ 
     TipoArvore patricia;
+    char nome1[30] = "rato";
+    char nome2[30] = "roeu";
+    char nome3[30] = "rata";
+    char nome4[30] = "rena";
+    int qt = 0, z;
 
     InicializaPatricia(&patricia);
-    Insere("rato",&patricia);
-    Insere("roeu",&patricia);
-    Insere("roupa",&patricia);
-    Insere("rei",&patricia);
-    Insere("rama",&patricia);
 
-
+    patricia = Insere(nome1,&patricia);
+    patricia = Insere(nome2,&patricia);
+    patricia = Insere(nome3,&patricia);
+    
+    z = pesquisa(nome2,patricia,&qt);
+    printf("z = %d\n",z);
+    
+    printf("qt %d\n",qt);
     return 0;
 } 
