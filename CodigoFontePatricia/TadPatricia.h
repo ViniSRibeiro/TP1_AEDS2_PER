@@ -37,6 +37,5 @@ TipoArvore InsereEntre (char *k, TipoArvore *t, int i, char CarDiferente);
 int EExterno (TipoArvore p);
 TipoArvore Insere(char *k, TipoArvore *t);
 int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp);
-int ComparaPalavra(char *palavraArvore, char *palavraRecebida);
+int ComparaPalavra(char *palavraNaArvore, char *palavraRec);
 int maior(int a, int b);
-void imprime(TipoArvore p);
