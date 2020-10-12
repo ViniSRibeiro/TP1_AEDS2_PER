@@ -150,17 +150,3 @@ int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp)
     }
     // return ;
 }
-
-void imprime(TipoArvore p){
-    if (p != NULL)
-        printf("%s ",p->NO.Chave);
-}
-
-void imprimePatricia(TipoArvore p){
-    if (p != NULL)
-    {
-        imprime(p->NO.NInterno.Esq);
-        imprime(p);
-        imprime(p->NO.NInterno.Dir);
-    }
-}

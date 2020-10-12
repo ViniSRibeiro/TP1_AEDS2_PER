@@ -40,5 +40,3 @@ int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp);
 int ComparaPalavra(char *palavraNaArvore, char *palavraRec);
 int maior(int a, int b);
 
-void imprime(TipoArvore p);
-void imprimePatricia(TipoArvore p);
