@@ -32,18 +32,15 @@ typedef struct TipoPatNo {
 }TipoPatNo;
 
 void inicializaPatricia(TipoArvore *t); //Inicializa o pontiero para a arvore com valor NULL
-TipoArvore CriaNoInt(int i, TipoArvore *Esq,  TipoArvore *Dir); //Realiza a criação de um nó interno
-TipoArvore CriaNoExt(TipoChave palavra); //Realiza a criação de um nó externo
+void ImprimePatricia(TipoArvore t);//Imprime a árvore PATRICIA
+
 int EExterno(TipoArvore p); //Verifica se o nó passado como parâmetro é externo, retornando 1 se for ou 0 se não for
-
+TipoArvore CriaNoExt(TipoChave palavra); //Realiza a criação de um nó externo
+TipoArvore CriaNoInt(int i, TipoArvore *Esq,  TipoArvore *Dir); //Realiza a criação de um nó interno
 // char Bit(char i, char palavra);
-
-
-// TipoArvore Pesquisa(TipoChave palavra, TipoArvore t); //Pesquisa uma dada chave na árvore, retornando o endereço de seu Nó se encontrar ou NULL se não encontrar
-
-// TipoArvore InsereEntre(TipoChave palavra, TipoArvore *t, int i);
+TipoArvore InsereEntre(TipoChave palavra, TipoArvore *t, int i);
 
 // TipoArvore Insere(TipoChave palavra, TipoArvore *t);
+// TipoArvore Pesquisa(TipoChave palavra, TipoArvore t); //Pesquisa uma dada chave na árvore, retornando o endereço de seu Nó se encontrar ou NULL se não encontrar
 
-// void ImprimePat(TipoArvore t);//Imprime a árvore PATRICIA
 

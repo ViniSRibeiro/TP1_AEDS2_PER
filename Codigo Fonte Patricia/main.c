@@ -6,10 +6,10 @@
     Roniel Nunes Barbosa 3464
     Vinícius Tadeu Silva Ribeiro 2670
 */
-//gcc -o teste main.c tadPatricia.c tadPatricia.h
-#include "tadPatricia.h"
+//gcc -o teste main.c TadPatricia.c TadPatricia.h
+#include "TadPatricia.h"
 
-int main(int argc, char *argv[]){ 
+int main(){ 
     TipoArvore ptr;
 
     ptr->TipoDeNo = Externo;

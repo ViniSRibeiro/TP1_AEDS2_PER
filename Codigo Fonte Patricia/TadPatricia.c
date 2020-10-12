@@ -6,7 +6,7 @@
     Roniel Nunes Barbosa 3464
     Vinícius Tadeu Silva Ribeiro 2670
 */
-#include "tadPatricia.h"
+#include "TadPatricia.h"
 
 void inicializaPatricia(TipoArvore *t){
     (*t) = NULL;
@@ -37,10 +37,49 @@ TipoArvore CriaNoExt(TipoChave palavra){
     return p;
 }
 
+void ImprimePatricia(TipoArvore t){
+    if (t == NULL){
+        printf("Arvore vazia!\n");
+        return;
+    }
+    
+    if (EExterno(t)){
+        printf("[palavra]: %s ",t->NO.Conteudo.Chave);
+    }else{
+        if (t->NO.NInterno.Esq != NULL)
+            ImprimePatricia(t->NO.NInterno.Esq);
+        if (t->NO.NInterno.Dir !=NULL)
+            ImprimePatricia(t->NO.Conteudo.Chave);
+    }
+}
+
 int EExterno(TipoArvore p){
     return (p->TipoDeNo == Externo); //retorna 0 se TipoDeNo for Externo, caso contraio 1.
 }
 
+// TipoArvore InsereEntre(TipoChave palavra, TipoArvore *t, int i){
+//     TipoArvore p;
+
+//     if (EExterno(*t) || i < (*t)->NO.NInterno.Index){
+//         p = CriaNoExt(palavra); //Cria um novo no externo
+//     }
+// }
+
+// TipoArvore InsereEntre(char palavra, TipoArvore *t, int i){ 
+//     TipoArvore p;
+//     if (EExterno(*t) || i < (*t)->NO.NInterno.Index){
+//         p = CriaNoExt(palavra); /*cria um novo no externo */
+//         if (Bit(i, palavra) == 1) 
+//         return (CriaNoInt(i, t, &p));
+//         else return (CriaNoInt(i, &p, t));
+//     }else{ 
+//         if (Bit((*t)->NO.NInterno.Index, palavra) == 1)
+//             (*t)->NO.NInterno.Dir = InsereEntre(palavra,&(*t)->NO.NInterno.Dir,i);
+//         else
+//             (*t)->NO.NInterno.Esq = InsereEntre(palavra,&(*t)->NO.NInterno.Esq,i);
+//         return (*t);
+//     }
+// }
 // char Bit(char i, char palavra){ 
 //     /* Retorna o i-esimo bit da chave k a partir da esquerda */
 //     int  c, j;
@@ -52,14 +91,6 @@ int EExterno(TipoArvore p){
 //         return (c & 1);
 //     }
 // } 
-
-
-// int EExterno(TipoArvore p){ /* Verifica se p^ e no do externo */
-//     return (p->tipodeNo == Externo);
-// }
-
-
-
 // void Pesquisa(char palavra, TipoArvore t){ 
 //     if (EExterno(t)){ 
 //         if (strcmp(palavra,t->NO.Conteudo.chave) == 0){
