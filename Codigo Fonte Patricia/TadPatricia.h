@@ -11,18 +11,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef enum {Interno, Externo}
-TipoNo;
+typedef enum {Interno, Externo}TipoNo;
 
 typedef struct TipoPatNo* TipoArvore;  // TipoArvore ponteiro para a patricia
-typedef char TipoChave;
+typedef char* TipoChave; //char* para TioChave, novo nome 
 
 typedef struct{
-  TipoChave chave; //Palavras 
+  TipoChave Chave; //Palavras 
 }TipoDados;
 
 typedef struct TipoPatNo {
-  TipoNo tipodeNo; //Tipo que será o no: Interno ou Externo
+  TipoNo TipoDeNo; //Tipo que será o no: Interno ou Externo
   union{
     struct{
       int Index;
@@ -32,18 +31,19 @@ typedef struct TipoPatNo {
   }NO;
 }TipoPatNo;
 
-void inicializaPatricia(TipoArvore *t);
+void inicializaPatricia(TipoArvore *t); //Inicializa o pontiero para a arvore com valor NULL
+TipoArvore CriaNoInt(int i, TipoArvore *Esq,  TipoArvore *Dir); //Realiza a criação de um nó interno
+TipoArvore CriaNoExt(TipoChave palavra); //Realiza a criação de um nó externo
+int EExterno(TipoArvore p); //Verifica se o nó passado como parâmetro é externo, retornando 1 se for ou 0 se não for
 
-char Bit(char i, TipoChave palavra);
+// char Bit(char i, char palavra);
 
-int EExterno(TipoArvore p);
 
-TipoArvore CriaNoInt(int i, TipoArvore *Esq,  TipoArvore *Dir);
+// TipoArvore Pesquisa(TipoChave palavra, TipoArvore t); //Pesquisa uma dada chave na árvore, retornando o endereço de seu Nó se encontrar ou NULL se não encontrar
 
-TipoArvore CriaNoExt(TipoChave palavra);
+// TipoArvore InsereEntre(TipoChave palavra, TipoArvore *t, int i);
 
-void Pesquisa(TipoChave palavra, TipoArvore t);
+// TipoArvore Insere(TipoChave palavra, TipoArvore *t);
 
-TipoArvore InsereEntre(TipoChave palavra, TipoArvore *t, int i);
+// void ImprimePat(TipoArvore t);//Imprime a árvore PATRICIA
 
-TipoArvore Insere(TipoChave palavra, TipoArvore *t);

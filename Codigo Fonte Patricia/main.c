@@ -6,22 +6,15 @@
     Roniel Nunes Barbosa 3464
     Vinícius Tadeu Silva Ribeiro 2670
 */
-#include "tad.h"
+//gcc -o teste main.c tadPatricia.c tadPatricia.h
+#include "tadPatricia.h"
 
 int main(int argc, char *argv[]){ 
-    TipoArvore a = NULL;
-    TipoChave c;
+    TipoArvore ptr;
 
-    int  i, j, k, n;
-    int  min = 32, max = 126;
-    TipoChave vetor[95];
+    ptr->TipoDeNo = Externo;
 
-
-
-    FILE *arquivoEntrada = NULL;
-
-
-
+    printf("valores: valor %d",EExterno(ptr));
         
     /* Gera uma permutacao aleatoria de chaves dos caracteres ASCII 32 a  126 */
     return 0;
