@@ -14,9 +14,8 @@
 
 typedef enum{Interno,Externo}TipoNo;
 
-typedef struct TPNo* TipoArvore;
-typedef struct TPNo
-{
+typedef struct TipoPatNo* TipoArvore;
+typedef struct TipoPatNo{
     TipoNo TipoDeNo;
     union
     {
@@ -28,7 +27,7 @@ typedef struct TPNo
         }NInterno;
         char Chave[55];
     }NO;
-}TPNo;
+}TipoPatNo;
 
 
 void InicializaPatricia(TipoArvore *p);

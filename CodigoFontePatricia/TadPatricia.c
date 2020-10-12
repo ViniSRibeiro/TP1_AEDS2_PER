@@ -16,7 +16,7 @@ TipoArvore CriaNoInterno(int i, char CarDiferente, TipoArvore *Esq,  TipoArvore 
 {
 
     TipoArvore pArvore;
-    pArvore = (TipoArvore) malloc(sizeof(TPNo));
+    pArvore = (TipoArvore) malloc(sizeof(TipoPatNo));
     pArvore->TipoDeNo = Interno;
     pArvore->NO.NInterno.Esq = *Esq;
     pArvore->NO.NInterno.Dir = *Dir;
@@ -33,7 +33,7 @@ TipoArvore CriaNoExterno (char *palavra)
 {
 
     TipoArvore pArvore;
-    pArvore = (TipoArvore) malloc(sizeof(TPNo));
+    pArvore = (TipoArvore) malloc(sizeof(TipoPatNo));
     pArvore->TipoDeNo = Externo;
     strcpy(pArvore->NO.Chave, palavra);
     return pArvore;
