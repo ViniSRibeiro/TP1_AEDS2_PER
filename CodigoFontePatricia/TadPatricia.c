@@ -115,12 +115,12 @@ int maior(int a, int b){
         return b;
 }
 
-int pesquisa(char *k, TipoArvore t,int *qtComp,int *altura)
+int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp)
 {
-    (*qtComp)++;
+    (*QuantidadeDeComp)+=1;
     if(EExterno(t))
     {
-        (*qtComp)++;
+        (*QuantidadeDeComp)+=1;
         if(strcmp(k, t->NO.Chave)==0)
         {
             return 1;
@@ -132,23 +132,20 @@ int pesquisa(char *k, TipoArvore t,int *qtComp,int *altura)
         // return ;
     }
 
-    (*qtComp)++;
+    (*QuantidadeDeComp)+=1;
     if(t->NO.NInterno.posicao > strlen(k))
     {
-        (*altura)++;
-        pesquisa(k, t->NO.NInterno.Esq,qtComp,altura);
+        pesquisa(k, t->NO.NInterno.Esq,QuantidadeDeComp);
         return 0;
     }
-    (*qtComp)++;
+    (*QuantidadeDeComp)+=1;
     if(k[t->NO.NInterno.posicao] >= t->NO.NInterno.letra)
     {
-        (*altura)++;
-        pesquisa(k,t->NO.NInterno.Dir,qtComp,altura);
+        pesquisa(k,t->NO.NInterno.Dir,QuantidadeDeComp);
     }
     else
     {
-        (*altura)++;
-        pesquisa(k, t->NO.NInterno.Esq,qtComp,altura);
+        pesquisa(k, t->NO.NInterno.Esq,QuantidadeDeComp);
     }
     // return ;
 }
