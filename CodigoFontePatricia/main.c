@@ -10,12 +10,15 @@
 #include "TadPatricia.h"
 
 int main(){ 
-    TipoArvore ptr;
+    TipoArvore patricia;
 
-    ptr->TipoDeNo = Externo;
+    InicializaPatricia(&patricia);
+    Insere("rato",&patricia);
+    Insere("roeu",&patricia);
+    Insere("roupa",&patricia);
+    Insere("rei",&patricia);
+    Insere("rama",&patricia);
 
-    printf("valores: valor %d",EExterno(ptr));
-        
-    /* Gera uma permutacao aleatoria de chaves dos caracteres ASCII 32 a  126 */
+
     return 0;
 } 
