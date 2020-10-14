@@ -8,15 +8,15 @@
 */
 #include "TadPatricia.h"
 
-void InicializaPatricia(TipoArvore *p){
+void InicializaPatricia(TipoApontadorPAT *p){
     *p=NULL;
 }
 
-TipoArvore CriaNoInterno(int i, char CarDiferente, TipoArvore *Esq,  TipoArvore *Dir)
+TipoApontadorPAT CriaNoInterno(int i, char CarDiferente, TipoApontadorPAT *Esq,  TipoApontadorPAT *Dir)
 {
 
-    TipoArvore pArvore;
-    pArvore = (TipoArvore) malloc(sizeof(TipoPatNo));
+    TipoApontadorPAT pArvore;
+    pArvore = (TipoApontadorPAT) malloc(sizeof(TipoPatNo));
     pArvore->TipoDeNo = Interno;
     pArvore->NO.NInterno.Esq = *Esq;
     pArvore->NO.NInterno.Dir = *Dir;
@@ -25,24 +25,24 @@ TipoArvore CriaNoInterno(int i, char CarDiferente, TipoArvore *Esq,  TipoArvore 
 
     return pArvore;
 }
-int EExterno (TipoArvore p){
+int EExterno (TipoApontadorPAT p){
     return (p->TipoDeNo == Externo);
 }
 
-TipoArvore CriaNoExterno (char *palavra)
+TipoApontadorPAT CriaNoExterno (char *palavra)
 {
     
-    TipoArvore pArvore;
-    pArvore = (TipoArvore) malloc(sizeof(TipoPatNo));
+    TipoApontadorPAT pArvore;
+    pArvore = (TipoApontadorPAT) malloc(sizeof(TipoPatNo));
     pArvore->TipoDeNo = Externo;
     strcpy(pArvore->NO.Chave, palavra);
     return pArvore;
 }
 
-TipoArvore Insere(char *k, TipoArvore *t)
+TipoApontadorPAT Insere(char *k, TipoApontadorPAT *t)
 {
 
-    TipoArvore pArvore;
+    TipoApontadorPAT pArvore;
     int i;
     if(*t == NULL){
         return CriaNoExterno(k);
@@ -68,9 +68,9 @@ TipoArvore Insere(char *k, TipoArvore *t)
 }
 
 
-TipoArvore InsereEntre (char *k, TipoArvore *t, int i, char CarDiferente)
+TipoApontadorPAT InsereEntre (char *k, TipoApontadorPAT *t, int i, char CarDiferente)
 {
-    TipoArvore pArvore;
+    TipoApontadorPAT pArvore;
     if(EExterno(*t) || i < (*t)->NO.NInterno.posicao) {
 
         pArvore = CriaNoExterno(k);
@@ -115,7 +115,7 @@ int maior(int a, int b){
         return b;
 }
 
-int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp)
+int pesquisa(char *k, TipoApontadorPAT t,int *QuantidadeDeComp)
 {
     (*QuantidadeDeComp)+=1;
     if(EExterno(t))

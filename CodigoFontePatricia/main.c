@@ -10,7 +10,7 @@
 #include "TadPatricia.h"
 
 int main(){ 
-    TipoArvore patricia;
+    TipoApontadorPAT patricia;
     char nome1[30] = "rato";
     char nome2[30] = "roeu";
     char nome3[30] = "rata";

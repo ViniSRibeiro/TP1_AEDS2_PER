@@ -14,7 +14,7 @@
 
 typedef enum{Interno,Externo}TipoNo;
 
-typedef struct TipoPatNo* TipoArvore;
+typedef struct TipoPatNo* TipoApontadorPAT;
 typedef struct TipoPatNo{
     TipoNo TipoDeNo;
     union
@@ -23,20 +23,20 @@ typedef struct TipoPatNo{
         {
             int posicao;
             char caracter;
-            TipoArvore Esq, Dir;
+            TipoApontadorPAT Esq, Dir;
         }NInterno;
         char Chave[55];
     }NO;
 }TipoPatNo;
 
 
-void InicializaPatricia(TipoArvore *p);
-TipoArvore CriaNoInterno (int i,char CarDiferente, TipoArvore *Esq, TipoArvore *Dir);
-TipoArvore CriaNoExterno (char *k);
-TipoArvore InsereEntre (char *k, TipoArvore *t, int i, char CarDiferente);
-int EExterno (TipoArvore p);
-TipoArvore Insere(char *k, TipoArvore *t);
-int pesquisa(char *k, TipoArvore t,int *QuantidadeDeComp);
+void InicializaPatricia(TipoApontadorPAT *p);
+TipoApontadorPAT CriaNoInterno (int i,char CarDiferente, TipoApontadorPAT *Esq, TipoApontadorPAT *Dir);
+TipoApontadorPAT CriaNoExterno (char *k);
+TipoApontadorPAT InsereEntre (char *k, TipoApontadorPAT *t, int i, char CarDiferente);
+int EExterno (TipoApontadorPAT p);
+TipoApontadorPAT Insere(char *k, TipoApontadorPAT *t);
+int pesquisa(char *k, TipoApontadorPAT t,int *QuantidadeDeComp);
 int ComparaPalavra(char *palavraNaArvore, char *palavraRec);
 int maior(int a, int b);
 
