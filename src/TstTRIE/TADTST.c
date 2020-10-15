@@ -1,9 +1,9 @@
 /*
 	Grupo: Return NULL;
-	Eduardo VinÌcius Bittencourt Esquivel 3498
+	Eduardo Vin√≠cius Bittencourt Esquivel 3498
 	Emanuel Vitor Carvalho Ruella 3891
 	Roniel Nunes Barbosa 3464
-	VinÌcius Tadeu Silva Ribeiro 2670
+	Vin√≠cius Tadeu Silva Ribeiro 2670
 */
 #include "TADTST.h"
 
@@ -16,35 +16,54 @@ tipoApontadorTST criarNo(char data) //Retorna um novo no, criado;
 {
 	tipoApontadorTST aux = (tipoApontadorTST) malloc(sizeof(TipoTST)); //Cria um auxiliar que vai armazenar por enquanto o novo No;
 	aux->data = data; //Insere a data no no;
-	aux->FimDeString = 0; //Retorna falso, n„o sendo fim da palavra;
+	aux->FimDeString = 0; //Retorna falso, n√£o sendo fim da palavra;
 	aux->esq = NULL; //Aponta a esquerda para NULL;
 	aux->meio = NULL; //Aponta o meio para NULL;
 	aux->dir = NULL; //Aponta a direita para NULL;
 	return aux; //Retorna o auxiliar;
 }
 
-void inserirEmTST(tipoApontadorTST *tst) // Usado para pegar a palavra e chamar a funÁ„o inserirPalavraTST para inserir na arvore. Criado para maior facilidade de implementaÁ„o.
+void inserirEmTST(tipoApontadorTST *tst) // Usado para pegar a palavra e chamar a fun√ß√£o inserirPalavraTST para inserir na arvore. Criado para maior facilidade de implementa√ß√£o.
 {
 	char buffer[MAX];
 	printf("Digite a palavra desejada: ");
 	scanf("%s", &buffer);
 	inserirPalavraTST(tst, &buffer);
 }
+
+void inserirArquivoTST(tipoApontadorTST *tst){//Insere as Palavras de um arquivo em dicionario
+    FILE *dicionario;
+    dicionario = fopen("dicionario.txt","r");
+    char palavra[MAX];
+    int i = 0;
+    while((fgetc(dicionario)) != EOF) {
+        if(i == 0){
+            rewind(dicionario);
+            i++;
+        }
+        fscanf(dicionario,"%s", palavra);
+        printf("%s\n",palavra);
+        inserirPalavraTST(tst, palavra);
+    }
+
+    fclose(dicionario);
+}
+
 void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra) //Insere uma palavra na arvore TST
 {
-	if (*noTST == NULL) //Verifica se a arvore ou posiÁ„o esta vazia, se estivar, cria um novo No;
+	if (*noTST == NULL) //Verifica se a arvore ou posi√ß√£o esta vazia, se estivar, cria um novo No;
 	{
 		*noTST = criarNo(*palavra); //Cria um no novo na arvore atual;
 	}
 	if ((*noTST)->data > (*palavra))//Se o caractere atual tiver menor valor, o insere na sub-arvore a esquerda;
 	{
-		inserirPalavraTST(&((*noTST)->esq), palavra); //Chama a funÁ„o inserir para a esquerda;
+		inserirPalavraTST(&((*noTST)->esq), palavra); //Chama a fun√ß√£o inserir para a esquerda;
 	}
 	else if ((*noTST)->data < (*palavra)) //Se o caractere atual tiver valor maior, o insere na sub-arvore a direita;
 	{
-		inserirPalavraTST(&((*noTST)->dir), palavra);//Chama a funÁ„o inserir para a direita;
+		inserirPalavraTST(&((*noTST)->dir), palavra);//Chama a fun√ß√£o inserir para a direita;
 	}
-	else //Se o caractere atual tiver valor identico ao da posiÁ„o atual na arvore.
+	else //Se o caractere atual tiver valor identico ao da posi√ß√£o atual na arvore.
 	{
 		if (*(palavra + 1))
 		{
@@ -57,7 +76,7 @@ void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra) //Insere uma pala
 	}
 }
 
-void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou n„o.
+void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou n√£o.
 {
 	char buffer[MAX];
 	printf("Digite a palavra desejada: ");
@@ -75,17 +94,17 @@ void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar pr
 }
 int procurarPalavraTST(tipoApontadorTST noTST, char *palavra) //Procura uma palavra na arvore TST, se a palavra existir, retorna 1, caso contrario 0;
 {
-	if (noTST == NULL) //Verifica se a arvore ou nÛ atual e nulo, se sim, retorna 0;
+	if (noTST == NULL) //Verifica se a arvore ou n√≥ atual e nulo, se sim, retorna 0;
 	{
 		return 0;
 	}
-	if ((noTST)->data > *palavra) //Verifica se o caractere contido no nÛ atual e maior que o caractere da palavra sendo procurada
+	if ((noTST)->data > *palavra) //Verifica se o caractere contido no n√≥ atual e maior que o caractere da palavra sendo procurada
 	{
-		return procurarPalavraTST(noTST->esq, palavra); //Se for maior, retorna recursivamente a funÁ„o atual, com a posiÁ„o para a esquerda;
+		return procurarPalavraTST(noTST->esq, palavra); //Se for maior, retorna recursivamente a fun√ß√£o atual, com a posi√ß√£o para a esquerda;
 	}
-	else if ((noTST)->data < *palavra) //Verifica se o caractere contido no nÛ atual e menor que o caractere da palavra sendo procurada
+	else if ((noTST)->data < *palavra) //Verifica se o caractere contido no n√≥ atual e menor que o caractere da palavra sendo procurada
 	{
-		return procurarPalavraTST(noTST->dir, palavra); //Se for menor, retorna recursivamente a funÁ„o atual, com a posiÁ„o para a direita;
+		return procurarPalavraTST(noTST->dir, palavra); //Se for menor, retorna recursivamente a fun√ß√£o atual, com a posi√ß√£o para a direita;
 	}
 	else //Caso o caractere atual seja igual ao caractere sendo procurado.
 	{
@@ -93,17 +112,17 @@ int procurarPalavraTST(tipoApontadorTST noTST, char *palavra) //Procura uma pala
 		{
 			return noTST->FimDeString; //Se for, retorna o FimDaString (1)
 		}
-		return procurarPalavraTST(noTST->meio, palavra + 1); //Caso n„o seja, retorna recursivamente a funÁ„o atual com a proxima posiÁ„o central e o proximo caractere.
+		return procurarPalavraTST(noTST->meio, palavra + 1); //Caso n√£o seja, retorna recursivamente a fun√ß√£o atual com a proxima posi√ß√£o central e o proximo caractere.
 		
 	}
 }
 
-void ordemTST(tipoApontadorTST noTST) //Apenas usado para criar um buffer e chamar a impress„o da TST
+void ordemTST(tipoApontadorTST noTST) //Apenas usado para criar um buffer e chamar a impress√£o da TST
 {
 	char buffer[MAX];
 	imprimirOrdemTST(noTST, buffer, 0);
 }
-void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura) //Ira imprimir a arvore TST em um sistema parecido com a funÁ„o de ORDEM;
+void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura) //Ira imprimir a arvore TST em um sistema parecido com a fun√ß√£o de ORDEM;
 {
 	if (noTST != NULL)
 	{
