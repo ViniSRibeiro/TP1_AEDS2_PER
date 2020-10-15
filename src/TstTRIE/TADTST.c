@@ -56,33 +56,29 @@ void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra) //Insere uma pala
 	if (*noTST == NULL) //Verifica se a arvore ou posição esta vazia, se estivar, cria um novo No;
 	{
 		*noTST = criarNo(*palavra); //Cria um no novo na arvore atual;
+		comp++;
 	}
-	comp++;
-	if ((*noTST)->data > (*palavra))//Se o caractere atual tiver menor valor, o insere na sub-arvore a esquerda;
-	{
+	if ((*noTST)->data > (*palavra)){//Se o caractere atual tiver menor valor, o insere na sub-arvore a esquerda;
+	
 		inserirPalavraTST(&((*noTST)->esq), palavra); //Chama a função inserir para a esquerda;
-	}
-	comp++;
-	else if ((*noTST)->data < (*palavra)) //Se o caractere atual tiver valor maior, o insere na sub-arvore a direita;
-	{
+		comp++;
+	}else{
+		if ((*noTST)->data < (*palavra)){ //Se o caractere atual tiver valor maior, o insere na sub-arvore a direita;
+	
 		inserirPalavraTST(&((*noTST)->dir), palavra);//Chama a função inserir para a direita;
-	}
-	comp++;
-	else //Se o caractere atual tiver valor identico ao da posição atual na arvore.
-	{
-		if (*(palavra + 1))
-		{
+		comp++;
+	}else{ //Se o caractere atual tiver valor identico ao da posição atual na arvore.
+		if (*(palavra + 1)){
 			inserirPalavraTST(&((*noTST)->meio), palavra + 1);
 		}
-		else // Caso seja o ultimo caractere da palavra;
-		{
+		else{ // Caso seja o ultimo caractere da palavra;
+
 			(*noTST)->FimDeString = 1; //Retorna o fim da String.
 		}
 	}
 }
 
-void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou não.
-{
+void procurarEmTST(tipoApontadorTST tst){ //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou não.
 	char buffer[MAX];
 	printf("Digite a palavra desejada: ");
 	scanf("%s", &buffer);
@@ -92,38 +88,35 @@ void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar pr
 	if (y == 1)
 	{
 		printf("A palavra esta contida na arvore TST\n");
-	}
-	else
-	{
+	}else{
 		printf("Erro: A palavra nao esta contida na arvore TST\n");
 	}
 }
-int procurarPalavraTST(tipoApontadorTST noTST, char *palavra) //Procura uma palavra na arvore TST, se a palavra existir, retorna 1, caso contrario 0;
-{
+
+int procurarPalavraTST(tipoApontadorTST noTST, char *palavra){ //Procura uma palavra na arvore TST, se a palavra existir, retorna 1, caso contrario 0;
+
 	comp++;
-	if (noTST == NULL) //Verifica se a arvore ou nó atual e nulo, se sim, retorna 0;
-	{
+	if (noTST == NULL){ //Verifica se a arvore ou nó atual e nulo, se sim, retorna 0;
 		return 0;
-	}
-	comp++;
-	if ((noTST)->data > *palavra) //Verifica se o caractere contido no nó atual e maior que o caractere da palavra sendo procurada
-	{
+		comp++;
+	};
+	
+	if ((noTST)->data > *palavra){ //Verifica se o caractere contido no nó atual e maior que o caractere da palavra sendo procurada
+	
 		return procurarPalavraTST(noTST->esq, palavra); //Se for maior, retorna recursivamente a função atual, com a posição para a esquerda;
-	}
-	comp++;
-	else if ((noTST)->data < *palavra) //Verifica se o caractere contido no nó atual e menor que o caractere da palavra sendo procurada
-	{
-		return procurarPalavraTST(noTST->dir, palavra); //Se for menor, retorna recursivamente a função atual, com a posição para a direita;
-	}
-	comp++;
-	else //Caso o caractere atual seja igual ao caractere sendo procurado.
-	{
-		if (*(palavra + 1) == '\0') //Verifica se o caractere atual e \0, ou seja, fim da String.
-		{
-			return noTST->FimDeString; //Se for, retorna o FimDaString (1)
-		}
-		return procurarPalavraTST(noTST->meio, palavra + 1); //Caso não seja, retorna recursivamente a função atual com a proxima posição central e o proximo caractere.
+		comp++;
+	}else{
+		if ((noTST)->data < *palavra){ //Verifica se o caractere contido no nó atual e menor que o caractere da palavra sendo procurada.
+			return procurarPalavraTST(noTST->dir, palavra); //Se for menor, retorna recursivamente a função atual, com a posição para a direita;
+			comp++;
+		}else{ //Caso o caractere atual seja igual ao caractere sendo procurado.
 		
+			if (*(palavra + 1) == '\0'){ //Verifica se o caractere atual e \0, ou seja, fim da String.
+				return noTST->FimDeString; //Se for, retorna o FimDaString (1)
+			}
+			return procurarPalavraTST(noTST->meio, palavra + 1); //Caso não seja, retorna recursivamente a função atual com a proxima posição central e o proximo caractere.
+			
+		}
 	}
 }
 
@@ -154,7 +147,7 @@ void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura) //Ira im
 
 		imprimirOrdemTST(noTST->dir, buffer, altura); //Anda pela subarvore da direita;
 	}
-	return;
+	return
 }
 
 void contarEmTST(tipoApontadorTST tst)//Usado para chamar o contarPalavrasTST e imprimir na tela a arvore correta
