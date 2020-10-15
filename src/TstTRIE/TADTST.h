@@ -23,6 +23,7 @@ typedef struct TipoTST //um nó de Arvore TST
 // A utility function to create a new ternary search tree node.
 void inicializaTST(tipoApontadorTST *tst); //Inicializa a arvore TST como NULL;
 TipoTST* criarNo(char data); // Cria um no novo;
+void inserirArquivoTST(tipoApontadorTST *tst);//Insere as Palavras de um arquivo em dicionario
 void inserirEmTST(tipoApontadorTST *tst); // Usado para pegar a palavra e chamar a função inserirPalavraTST para inserir na arvore. Criado para maior facilidade de implementação.
 void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra);//Insere um no novo e insere um caractere;
 void procurarEmTST(tipoApontadorTST TST); //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou não.
