@@ -1,14 +1,14 @@
 /*
 	Grupo: Return NULL;
-	Eduardo Vin√≠cius Bittencourt Esquivel 3498
+	Eduardo VinÌcius Bittencourt Esquivel 3498
 	Emanuel Vitor Carvalho Ruella 3891
 	Roniel Nunes Barbosa 3464
-	Vin√≠cius Tadeu Silva Ribeiro 2670
+	VinÌcius Tadeu Silva Ribeiro 2670
 */
 
 #include "menu.h"
 
-void imprimeMenuAtual(int arvoreAtiva) //Fun√ß√£o que chama a fun√ß√£o correta com o menu sendo utilizado no momento de acordo com a arvore ativa
+void imprimeMenuAtual(int arvoreAtiva) //FunÁ„o que chama a funÁ„o correta com o menu sendo utilizado no momento de acordo com a arvore ativa
 {
 	if (arvoreAtiva == TST) //Checa qual a arvore ativa
 	{
@@ -22,7 +22,7 @@ void imprimeMenuAtual(int arvoreAtiva) //Fun√ß√£o que chama a fun√ß√£o correta c
 	return;
 }
 
-void EscolheArvore(int *arvoreAtiva) //Imprime o menu para mudan√ßa de arvore e modifica a arvore ativa.
+void EscolheArvore(int *arvoreAtiva) //Imprime o menu para mudanÁa de arvore e modifica a arvore ativa.
 {
 	int y;
 	printf("|== Arvores Disponiveis ==|\n");
@@ -43,48 +43,82 @@ void EscolheArvore(int *arvoreAtiva) //Imprime o menu para mudan√ßa de arvore e 
 
 void ImprimeMenuPatricia() //Imprime o menu Patricia
 {
-	int option = 0; //Inicializar com 0 para a gun√ß√£o entrar a primeira vez no loop
-	do
-	{
-		printf("|========== Menu Arvore Patricia ==========|\n");
-		printf("|1) Alterar Arvore                         |\n");
-		printf("|2) Inserir Palavra                        |\n");
-		printf("|3) Pesquisar Palavra                      |\n");
-		printf("|4) Imprimir arvore em ordem Alfabetica    |\n");
-		printf("|5) Numero de palavras na Arvore           |\n");
-		printf("|6) Finalizar o Programa                   |\n");
-		printf("|==========================================|\n");
-		scanf("%d",&option);
-	} while (option < 6);
-	
-	
+	printf("|========== Menu Arvore Patricia ==========|\n");
+	printf("|1) Alterar Arvore                         |\n");
+	printf("|2) Inserir Palavra                        |\n");
+	printf("|3) Pesquisar Palavra                      |\n");
+	printf("|4) Imprimir arvore em ordem Alfabetica    |\n");
+	printf("|5) Numero de palavras na Arvore           |\n");
+	printf("|6) Insercao por arquivo Dicionario        |\n");
+	printf("|7) Finalizar o Programa                   |\n");
+	printf("|==========================================|\n");
 }
 
 void ImprimeMenuTST() //Imprime o menu TST
 {
-	int option = 0; //Inicializar com 0 para a gun√ß√£o entrar a primeira vez no loop
-	do
-	{
-		printf("|============ Menu Arvore TST =============|\n");
-		printf("|1) Alterar Arvore                         |\n");
-		printf("|2) Inserir Palavra                        |\n");
-		printf("|3) Pesquisar Palavra                      |\n");
-		printf("|4) Imprimir arvore em ordem Alfabetica    |\n");
-		printf("|5) Numero de palavras na Arvore           |\n");
-		printf("|6) Finalizar o Programa                   |\n");
-		printf("|==========================================|\n");
-		scanf("%d",&option);
+	printf("|============ Menu Arvore TST =============|\n");
+	printf("|1) Alterar Arvore                         |\n");
+	printf("|2) Inserir Palavra                        |\n");
+	printf("|3) Pesquisar Palavra                      |\n");
+	printf("|4) Imprimir arvore em ordem Alfabetica    |\n");
+	printf("|5) Numero de palavras na Arvore           |\n");
+	printf("|6) Insercao por arquivo Dicionario        |\n");
+	printf("|7) Finalizar o Programa                   |\n");
+	printf("|==========================================|\n");
+}
 
-		switch (option)
-		{
-		case 1:
-			/* code */
-			break;
-		
-		default:
-			break;
-		}
-	} while (option < 6);
-	
-	
+void EscolheInserir(tipoApontadorTST *tst, int arvoreAtiva) //Criado para facilitar a implementaÁ„o da funÁ„o inserir, ira verificar a arvore ativa (TST ou Patricia) e selecionar a correta)
+{
+	if (arvoreAtiva == TST)
+	{
+		inserirEmTST(tst);
+	}
+	else
+	{
+		//inserirPalavraPAT(pat);
+	}
+}
+void EscolheProcurar(tipoApontadorTST tst, int arvoreAtiva) //Criado para facilitar a implementaÁ„o da funÁ„o Procurar, ira verificar a arvore ativa (TST ou Patricia) e selecionar a correta)
+{
+	if (arvoreAtiva == TST)
+	{
+		procurarEmTST(tst);
+	}
+	else
+	{
+		//procurarPalavraPAT(&pat);
+	}
+}
+void EscolheOrdem(tipoApontadorTST tst, int arvoreAtiva) //Criado para facilitar a implementaÁ„o da funÁ„o Imprimir em Ordem Alfabetica, ira verificar a arvore ativa (TST ou Patricia) e selecionar a correta)
+{
+	if (arvoreAtiva == TST)
+	{
+		ordemTST(tst);
+	}
+	else
+	{
+		//imprimirOrdemPAT(pat);
+	}
+}
+void EscolheContar(tipoApontadorTST tst, int arvoreAtiva) //Criado para facilitar a implementaÁ„o da funÁ„o Contar numero de palavras, ira verificar a arvore ativa (TST ou Patricia) e selecionar a correta)
+{
+	if (arvoreAtiva == TST)
+	{
+		contarEmTST(tst);
+	}
+	else
+	{
+		//y = contarPalavrasPAT(pat);
+	}
+}
+void EscolheInserirArquivo(tipoApontadorTST *tst, int arvoreAtiva) //Criado para facilitar a implementaÁ„o da funÁ„o inserir por arquivo, ira verificar a arvore ativa (TST ou Patricia) e selecionar a correta)
+{
+	if (arvoreAtiva == TST)
+	{
+		inserirArquivoTST(tst);
+	}
+	else
+	{
+		//inserirPalavraPAT(pat);
+	}
 }
