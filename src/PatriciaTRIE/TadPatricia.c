@@ -8,8 +8,8 @@
 */
 #include "TadPatricia.h"
 
-void InicializaPatricia(TipoApontadorPAT *p){
-    *p=NULL;
+void InicializaPatricia(TipoApontadorPAT *p){ //Função De inicialização do ponteiro para a árvore
+    *p=NULL;                                  // Inicializa o ponteiro para NUll (*P = NULL);
 }
 
 TipoApontadorPAT CriaNoInterno(int i, char CarDiferente, TipoApontadorPAT *Esq,  TipoApontadorPAT *Dir)
