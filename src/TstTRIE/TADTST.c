@@ -44,7 +44,6 @@ void inserirArquivoTST(tipoApontadorTST *tst){//Insere as Palavras de um arquivo
             i++;
         }
         fscanf(dicionario,"%s", palavra);
-        printf("%s\n",palavra);
         inserirPalavraTST(tst, palavra);
     }
 
