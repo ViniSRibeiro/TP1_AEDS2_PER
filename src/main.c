@@ -11,7 +11,7 @@
 void Main_interface(){
     
     int option;
-     printf(" --------------------------------------------------------- \n");
+    printf(" --------------------------------------------------------- \n");
     printf("|                       UFV - CAF                         |\n");
     printf("|                         TP 1                            |\n");
     printf("|                    AEDS II - CCF 212                    |\n");
