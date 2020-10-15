@@ -28,7 +28,7 @@ void Main_interface(){
 int main(){
     tipoApontadorTST tst; //Cria a TST
     TipoApontadorPAT patricia; //Cria a Patricia
-
+    Main_interface();
 
     return 0;
 }
