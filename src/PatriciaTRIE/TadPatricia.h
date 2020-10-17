@@ -10,39 +10,42 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#define MaxTamPalavra 50 //Maior palavra do mundo tem 46, mas vamos colocar 50, vai que atualiza kk
 
 
-typedef enum{Interno,Externo}TipoNo;
+typedef enum
+{
+    Interno,Externo
+}TipoNo; //Enumeração interno = 0 e externo = 1;
 
-typedef struct TipoPatNo* TipoApontadorPAT;
-typedef struct TipoPatNo{
-    TipoNo TipoDeNo;
+typedef struct TipoNoPAT* TipoApontadorPAT; //Modificação de nome para melhor entedimento no apontamento. 
+
+typedef struct TipoNoPAT //Estrutura da patricia
+{
+    TipoNo tipoDeNo;  //Identidica o tipo de nó: interno ou externo.
     union
     {
         struct
         {
-            int posicao;
-            char caracter;
-            TipoApontadorPAT Esq, Dir;
-        }NInterno;
-        char Chave[55];
-    }NO;
-}TipoPatNo;
+            int i; //posição de diferença
+            char caracter; //Caracter que difere
+            TipoApontadorPAT Esq, Dir; //Apontadores para nós esquerdo e direito.
+        }NInterno;  //Nó interno
+        char Chave[MaxTamPalavra]; //Chave armazenada no nó externo.
+    }NO; //Nó completo.
+}TipoNoPAT; //Patricia.
 
-// Controle de implementações
-// Insere Palavra   [v]                     Verificação ocorreu? Sim[]  Não[x]  Teste de mesa e compitalação
-// Pesquisa Palavra [v]                     Verificação ocorreu? Sim[]  Não[x]  Teste de mesa e compitalação
-// Imprime arvore em ordem Alfabetica[x]    Verificação ocorreu? Sim[]  Não[x]  Teste de mesa e compitalação
-// Numero de palavras na arvore [x]         Verificação ocorreu? Sim[]  Não[x]  Teste de mesa e compitalação
-// 
 
-void InicializaPatricia(TipoApontadorPAT *p); //Faz a inicialização do ponteiro do tipo TipoApontadorPAR sendo nulo como valor base
-TipoApontadorPAT CriaNoInterno (int i,char CarDiferente, TipoApontadorPAT *Esq, TipoApontadorPAT *Dir); 
-TipoApontadorPAT CriaNoExterno (char *k); 
-TipoApontadorPAT InsereEntre (char *k, TipoApontadorPAT *t, int i, char CarDiferente);
-int EExterno (TipoApontadorPAT p);
-TipoApontadorPAT Insere(char *k, TipoApontadorPAT *t);
-int pesquisa(char *k, TipoApontadorPAT t,int *QuantidadeDeComp);
-int ComparaPalavra(char *palavraNaArvore, char *palavraRec);
-int maior(int a, int b);
-
+//Funções utilizadas para manipular a patricia.
+void InicializarPAT(TipoApontadorPAT *pAt);
+TipoApontadorPAT CriaNoInterno(int i, char palavra, TipoApontadorPAT *Esq,  TipoApontadorPAT *Dir);
+TipoApontadorPAT CriaNoExterno (char *palavra); 
+TipoApontadorPAT InsereEntre (char *palavra, TipoApontadorPAT *pAt, int i, char CarQueDiferencia);//vvv
+int EExterno (TipoApontadorPAT pAt);
+TipoApontadorPAT Insere(char *palavra, TipoApontadorPAT *pAt);
+int maiorPalavra(char *palavraA, char *palavraB);
+int ComparaPalavra(char *palavraNaArvore, char *palavraSerInserida);
+int maiorCaracter(int caracterPalavraA, int caracterPalavraB);
+void quantidadePalavras(TipoApontadorPAT pAt,int *nNo);
+int pesquisaPAT(char *palavra,TipoApontadorPAT pAt,int *nComparacao);
+void imprimePAT(TipoApontadorPAT p);
