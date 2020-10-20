@@ -1,19 +1,22 @@
 /*
 	Grupo: Return NULL;
-	Eduardo Vin√≠cius Bittencourt Esquivel 3498
+	Eduardo VinÌcius Bittencourt Esquivel 3498
 	Emanuel Vitor Carvalho Ruella 3891
 	Roniel Nunes Barbosa 3464
-	Vin√≠cius Tadeu Silva Ribeiro 2670
+	VinÌcius Tadeu Silva Ribeiro 2670
 */
-#pragma once
+#ifndef TADTST
+#define TADTST
+
 #include <stdio.h> 
 #include <stdlib.h> 
-
-#define MAX 50 //Maximo numero de caracteres em uma palavra;
+#include <string.h>
+#include <time.h>
+#define MAX 60 //Maximo numero de caracteres em uma palavra;
 
 typedef struct TipoTST* tipoApontadorTST; //Ponteiro para No TST;
 
-typedef struct TipoTST //um n√≥ de Arvore TST
+typedef struct TipoTST //um nÛ de Arvore TST
 {
 	char data; //Charactere guardado;
 	unsigned FimDeString : 1; //Retorna Verdadeiro caso for o fim da palavra;
@@ -23,12 +26,14 @@ typedef struct TipoTST //um n√≥ de Arvore TST
 // A utility function to create a new ternary search tree node.
 void inicializaTST(tipoApontadorTST *tst); //Inicializa a arvore TST como NULL;
 TipoTST* criarNo(char data); // Cria um no novo;
-void inserirArquivoTST(tipoApontadorTST *tst);//Insere as Palavras de um arquivo em dicionario
-void inserirEmTST(tipoApontadorTST *tst); // Usado para pegar a palavra e chamar a fun√ß√£o inserirPalavraTST para inserir na arvore. Criado para maior facilidade de implementa√ß√£o.
-void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra);//Insere um no novo e insere um caractere;
-void procurarEmTST(tipoApontadorTST TST); //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou n√£o.
-int procurarPalavraTST(tipoApontadorTST noTST, char *palavra); //Procura uma palavra na arvore TST, se a palavra existir, retorna 1, caso contrario 0;
-void ordemTST(tipoApontadorTST noTST); //usado para criar um buffer e chamar ImprimirOrdemTST, para facil implementa√ß√£o.
-void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura); //Imprime em ordem as palavras
+void inserirEmTST(tipoApontadorTST *tst); // Usado para pegar a palavra e chamar a funÁ„o inserirPalavraTST para inserir na arvore. Criado para facilitar a implementaÁ„o da InserirPalavraTST.
+void inserirPalavraTST(tipoApontadorTST *noTST, char *palavra, int *comp);//Insere um no novo e insere um caractere;
+void procurarEmTST(tipoApontadorTST TST); //Usado para pegar a palavra, chamar procurarPalavraTST e imprimir na tela se a palavra foi encontrada ou n„o;
+int procurarPalavraTST(tipoApontadorTST noTST, char *palavra, int* comp); //Procura uma palavra na arvore TST, se a palavra existir, retorna 1, caso contrario 0;
+void ordemTST(tipoApontadorTST noTST); //usado para criar um buffer e chamar ImprimirOrdemTST, criada para facilitar implementaÁ„o do ImprimirOrdemTST;
+void imprimirOrdemTST(tipoApontadorTST noTST, char* buffer, int altura); //Imprime em ordem as palavras contidas na lista;
 void contarEmTST(tipoApontadorTST tst); //Usado para chamar o contarPalavrasTST e imprimir na tela a arvore correta
-int contarPalavrasTST(tipoApontadorTST noTST); //Conta o numero de palavras existentes;
+void contarPalavrasTST(tipoApontadorTST noTST, int *quantidadePalavras); //Conta o numero de palavras existentes;
+void inserirArquivoTST(tipoApontadorTST *tst); //Usado para criar as variaveis basicas e abrir o arquivo dicionario, que sera inserido na Arvore TST;
+
+#endif
