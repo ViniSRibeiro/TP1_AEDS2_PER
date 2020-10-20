@@ -145,8 +145,6 @@ void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar pr
 }
 int procurarPalavraTST(tipoApontadorTST noTST, char *palavra, int* comp) //Procura uma palavra na arvore TST, se a palavra existir, retorna 1, caso contrario 0;
 {
-	//Colocar Memoria aqui
-
 	(*comp)++; //Adiciona mais um no inteiro de comparação para o if abaixo, visto que sempre ira comparar.
 	if (noTST == NULL) //Verifica se a arvore ou nó atual e nulo, se sim, retorna 0;
 	{

@@ -11,7 +11,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include "TADTST.h"
-#include "Time.h"
+#include <time.h>
 #include "TadPatricia.h"
 
 //#include "TADPatricia.h";
