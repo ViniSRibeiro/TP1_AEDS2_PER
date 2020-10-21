@@ -1,0 +1,2 @@
+Os arquivos 1 e 3 são identicos, com 1000 palavras, porém, o arquivo 3 esta em ordem alfabetica.
+Arquivo 2 são palavras geradas aleatoriamente (2 milhões de palavras) mas possui repetidas.

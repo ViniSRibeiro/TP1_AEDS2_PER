@@ -8,9 +8,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "menu.h"
-#include "TADTST.h"
 #include <time.h>
+#include "headers/menu.h"
+#include "headers/TADTST.h"
+#include "headers/TadPatricia.h"
 
 void main()
 {
