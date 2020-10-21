@@ -255,11 +255,6 @@ int pesquisaPAT(char *palavra,TipoApontadorPAT pAt,int *nComparacao) //Função 
             return 0;    //Retonra 0 caso a palavra não esteja na árvore. 
     }
     (*nComparacao) += 1; //Contador de comparações.
-    if(strlen(palavra) < pAt->NO.NInterno.i){ //comapração se a palavra é menor que o indice do no interno.
-        pesquisaPAT(palavra, pAt->NO.NInterno.Esq,nComparacao);  //"Caminha" para à esqueda caso condição verdadeira.
-        return 0;                                                  //Retonra 0 caso a palavra não esteja na árvore. 
-    }
-    (*nComparacao) += 1; //Contador de comparações.
     if(palavra[pAt->NO.NInterno.i] >= pAt->NO.NInterno.caracter) // Condição para decidir se o indice da palavra procurada é menor que o caracter armazenado.
         pesquisaPAT(palavra,pAt->NO.NInterno.Dir,nComparacao);   // "caminha" para a direita caso o Caracter que diferencia a palvra sejá maior.
     else
