@@ -23,7 +23,7 @@ void inserirEmTST(tipoApontadorTST *tst) // Usado para pegar a palavra e chamar 
 	scanf("%s", &buffer); //Pega uma palavra digita pelo usuario;
 
 	Ticks[0] = clock(); //Pega o tempo antes do inicio da função InserirPalavraTST;
-	inserirPalavraTST(tst, &buffer, &comp); //Chama a função inserirPalavraTST;
+	inserirPalavraTST(tst, buffer, &comp); //Chama a função inserirPalavraTST;
 	Ticks[1] = clock(); //Pega o tempo apos o fim da função inserirPalavraTST;
 
 	double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC; //Calcula o tempo percorrido em ms;
@@ -59,7 +59,7 @@ void inserirArquivoTST(tipoApontadorTST *tst) {//Insere as Palavras de um arquiv
 		{
 			*pos = '\0'; //Substitui o \n por \0
 		}
-		inserirPalavraTST(tst, &buffer, &comp); //Chama o InserirPalavraTST, enviando a arvore, a palavra e os inteiros para memoria e comparações feitas;
+		inserirPalavraTST(tst, buffer, &comp); //Chama o InserirPalavraTST, enviando a arvore, a palavra e os inteiros para memoria e comparações feitas;
 
 	}
 	fclose(dicionario); //Fecha o arquivo dicionario;
@@ -128,7 +128,7 @@ void procurarEmTST(tipoApontadorTST tst) //Usado para pegar a palavra, chamar pr
 	scanf("%s", &buffer); //Armazena a palavra desejada para a procura;
 
 	Ticks[0] = clock(); //Pega o tempo antes do inicio da função procurarPalavraTST;
-	int y = procurarPalavraTST(tst, &buffer, &comp); //Procura se a palavra esta na TST, se estiver, ira retornar 1, se não, 0;
+	int y = procurarPalavraTST(tst, buffer, &comp); //Procura se a palavra esta na TST, se estiver, ira retornar 1, se não, 0;
 	if (y == 1) //Se y == 1  (A palavra esta na arvore) ele imprime que sim, caso contrario, imprime que não esta presente;
 	{
 		printf("A palavra esta contida na arvore TST\n");

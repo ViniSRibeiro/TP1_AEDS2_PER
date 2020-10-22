@@ -222,7 +222,7 @@ void procurarEmPAT(TipoApontadorPAT pat) //Usado para pegar a palavra, chamar pe
 	scanf("%s", &buffer); //Armazena a palavra desejada para a procura;
 
 	Ticks[0] = clock(); //Pega o tempo antes do inicio da função pesquisaPAT;
-	int y = pesquisaPAT(&buffer,pat, &comp); //Procura se a palavra esta na TST, se estiver, ira retornar 1, se não, 0;
+	int y = pesquisaPAT(buffer,pat, &comp); //Procura se a palavra esta na TST, se estiver, ira retornar 1, se não, 0;
 	if (y == 1) //Se y == 1  (A palavra esta na arvore) ele imprime que sim, caso contrario, imprime que não esta presente;
 	{
 		printf("A palavra esta contida na arvore PAT\n");
